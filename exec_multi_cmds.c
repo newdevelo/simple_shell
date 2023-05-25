@@ -3,11 +3,11 @@
 /**
  * exec_multi_cmds - Execute multiple commands separated by semicolons
  * @user_prompt: The user input string containing the commands
- * @sh_name: program name
- * @cnt: cmonad count
+ * @sh_namee: program name
+ * @cntt: cmonad count
  * Return: error code
  */
-int exec_multi_cmds(char *user_prompt, char *sh_name, int cnt)
+int exec_multi_cmds(char *user_prompt, char *sh_namee, int cntt)
 {
 	int num_of_cmds, num_of_words, i, ex_code;
 	char **arr_of_cmds, **arr_of_words;
@@ -37,10 +37,10 @@ int exec_multi_cmds(char *user_prompt, char *sh_name, int cnt)
 		{
 			free_words(arr_of_cmds, num_of_cmds);
 			handle_exit_with_status(arr_of_words, user_prompt,
-			sh_name, cnt, num_of_words);
+			sh_namee, cntt, num_of_words);
 		}
-		ex_code = execute_by_forking(arr_of_words, user_prompt, sh_name,
-		cnt, num_of_words);
+		ex_code = execute_by_forking(arr_of_words, user_prompt, sh_namee,
+		cntt, num_of_words);
 		free_words(arr_of_words, num_of_words);
 	}
 

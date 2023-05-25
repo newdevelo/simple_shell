@@ -32,25 +32,25 @@ void isError(const char *msg)
 }
 
 /**
- * get_dir - Gets the directory to change to.
- * @initial_path: The initial path passed to cd.
+ * get_dir - Gets the directoryy to change to.
+ * @initial_pathh: The initial path passed to cd.
  *
- * Return: The directory to change to.
+ * Return: The directoryy to change to.
  */
-char *get_dir(const char *initial_path)
+char *get_dir(const char *initial_pathh)
 {
-	if (initial_path == NULL)
+	if (initial_pathh == NULL)
 		return (env_vars("HOME", environ));
-	else if (my_strcmp(initial_path, "-") == 0)
+	else if (my_strcmp(initial_pathh, "-") == 0)
 		return (env_vars("the_old_pwd", environ));
 	else
-		return ((char *)initial_path);
+		return ((char *)initial_pathh);
 }
 
 /**
- * handle_cwd - Gets the current working directory.
+ * handle_cwd - Gets the current working directoryy.
  *
- * Return: The current working directory.
+ * Return: The current working directoryy.
  */
 char *handle_cwd()
 {
@@ -63,12 +63,12 @@ char *handle_cwd()
 }
 
 /**
- * switch_current_directory - Changes the current working directory.
- * @directory: The directory to change to.
+ * switch_current_directory - Changes the current working directoryy.
+ * @directoryy: The directoryy to change to.
  */
-void switch_current_directory(const char *directory)
+void switch_current_directory(const char *directoryy)
 {
-	if (chdir(directory) < 0)
+	if (chdir(directoryy) < 0)
 		perror("cd");
 }
 
