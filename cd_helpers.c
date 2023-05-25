@@ -13,10 +13,10 @@ char *env_vars(const char *env_namee, char **env_pointerr)
 
 	for (the_env = env_pointerr; *the_env != NULL; the_env++)
 	{
-		if (strncmp(env_name, *the_env, get_strlen(env_name)) == 0
-				&& (*the_env)[get_strlen(env_name)] == '=')
+		if (strncmp(env_namee, *the_env, get_strlen(env_namee)) == 0
+				&& (*the_env)[get_strlen(env_namee)] == '=')
 		{
-			return (*the_env + get_strlen(env_name) + 1);
+			return (*the_env + get_strlen(env_namee) + 1);
 		}
 	}
 	return (NULL);
