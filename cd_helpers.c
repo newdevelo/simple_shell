@@ -2,16 +2,16 @@
 
 /**
  * env_vars - Gets the value of an environment variable.
- * @env_name: The name of the environment variable.
- * @env_pointer: Pointer to the environment variables array.
+ * @env_namee: The name of the environment variable.
+ * @env_pointerr: Pointer to the environment variables array.
  *
  * Return: The value of the environment variable.
  */
-char *env_vars(const char *env_name, char **env_pointer)
+char *env_vars(const char *env_namee, char **env_pointerr)
 {
 	char **the_env;
 
-	for (the_env = env_pointer; *the_env != NULL; the_env++)
+	for (the_env = env_pointerr; *the_env != NULL; the_env++)
 	{
 		if (strncmp(env_name, *the_env, get_strlen(env_name)) == 0
 				&& (*the_env)[get_strlen(env_name)] == '=')
