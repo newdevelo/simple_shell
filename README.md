@@ -1,5 +1,5 @@
-Simple Shell
+# Simple Shell
 
-Authors
+### Authors
 
-Badr hammada
+Badr Hammada
