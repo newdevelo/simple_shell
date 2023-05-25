@@ -4,8 +4,8 @@
 /**
  * p_the_err - errrorrorrooror
  * @sh_name: naaaaaaame
- * @cmd: cmmmmmmmd
- * @msg: msssssg
+ * @cmd: cmmmmmmd
+ * @msg: mssssg
  * @cnt: cmonad count
  * Return: void
 */
@@ -25,7 +25,7 @@ void p_the_err(char *cnt, char *sh_name, char *cmd, char *msg)
 
 /**
  * ex_err- errrorrorrooror
- * @sh_name: naaaaaaame
+ * @sh_name: naaaaaame
  * @arr_of_words: akfjalal
  * @cntr: cmonad count
  * Return: void
