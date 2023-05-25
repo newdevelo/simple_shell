@@ -2,27 +2,27 @@
 
 /**
  * split_string - splits a string into an array of words
- * @str: the str to be splited
+ * @strr: the strr to be splited
  * @str_separatorr: the delimeter
- * @num_of_wordss: number of words in the str
+ * @num_of_wordss: number of words in the strr
  * Return: the array of string or NULL
 */
 
-char **split_string(char *str, const char *str_separatorr, int *num_of_wordss)
+char **split_string(char *strr, const char *str_separatorr, int *num_of_wordss)
 {
 	char *str_copy = NULL, *word = NULL, **arr_of_wordss;
 	int i;
 
-	str_copy = malloc(sizeof(char) * get_strlen(str) + 1);
+	str_copy = malloc(sizeof(char) * get_strlen(strr) + 1);
 	if (str_copy == NULL)
 	{
 		perror("Allocation Failed !");
 		return (NULL);
 	}
-	my_strcpy(str_copy, str);
+	my_strcpy(str_copy, strr);
 
 	*num_of_wordss = 0;
-	word = strtok(str, str_separatorr);
+	word = strtok(strr, str_separatorr);
 	while (word != NULL)
 	{
 		(*num_of_wordss)++;
