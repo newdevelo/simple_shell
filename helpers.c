@@ -2,21 +2,21 @@
 
 /**
  * intToString - int to a str
- * @num: integg
+ * @numm: integg
  * Return: str
  */
-char *intToString(int num)
+char *intToString(int numm)
 {
 	int negative_num = 0, digCntr = 0, tmp, i = 0, j = 0;
 	char *str;
 
-	if (num < 0)
+	if (numm < 0)
 	{
 		negative_num = 1;
-		num *= -1;
+		numm *= -1;
 		digCntr++;
 	}
-	tmp = num;
+	tmp = numm;
 	while (tmp > 0)
 	{
 		digCntr++;
@@ -24,9 +24,9 @@ char *intToString(int num)
 	}
 	str = (char *) malloc(sizeof(char) * (digCntr + 1));
 	do {
-		str[i++] = (num % 10) + '0';
-		num /= 10;
-	} while (num);
+		str[i++] = (numm % 10) + '0';
+		numm /= 10;
+	} while (numm);
 
 	if (negative_num)
 	{

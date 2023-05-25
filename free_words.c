@@ -1,25 +1,25 @@
 #include "shell.h"
 
 /**
- * free_words - Frees a list of words.
- * @words: Pointer to an array of strings.
- * @num_of_words: Number of words in the array.
+ * free_words - Frees a list of wordss.
+ * @wordss: Pointer to an array of strings.
+ * @num_of_wordss: Number of wordss in the array.
  * This function frees each individual string in the array using the
  * free() function and finally frees the array itself using free().
  */
-void free_words(char **words, int num_of_words)
+void free_words(char **wordss, int num_of_wordss)
 {
 	int i;
 
-	if (words == NULL)
+	if (wordss == NULL)
 		return;
-	for (i = 0; i < num_of_words; i++)
+	for (i = 0; i < num_of_wordss; i++)
 	{
-		if (words[i] != NULL)
+		if (wordss[i] != NULL)
 		{
-			free(words[i]);
-			words[i] = NULL;
+			free(wordss[i]);
+			wordss[i] = NULL;
 		}
 	}
-	free(words);
+	free(wordss);
 }

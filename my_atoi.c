@@ -2,29 +2,29 @@
 
 /**
  * my_atoi - implementation of built in atoi
- * @string: the string
+ * @stringg: the stringg
  * Return: integer
 */
 
-int my_atoi(const char *string)
+int my_atoi(const char *stringg)
 {
 	int ans = 0, sign_val = 1;
 
-	while (*string == ' ' || *string == '\t' || *string == '\n')
-		string++;
+	while (*stringg == ' ' || *stringg == '\t' || *stringg == '\n')
+		stringg++;
 
-	if (*string == '-')
+	if (*stringg == '-')
 	{
 		sign_val = -1;
-		string++;
+		stringg++;
 	}
-	else if (*string == '+')
-		string++;
+	else if (*stringg == '+')
+		stringg++;
 
-	while (*string >= '0' && *string <= '9')
+	while (*stringg >= '0' && *stringg <= '9')
 	{
-		ans = ans * 10 + (*string - '0');
-		string++;
+		ans = ans * 10 + (*stringg - '0');
+		stringg++;
 	}
 
 	return (sign_val * ans);

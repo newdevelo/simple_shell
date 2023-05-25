@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * my_strcpy - copies a src to dest
- * @dest: dest str
- * @src: the string
+ * my_strcpy - copies a srcc to destt
+ * @destt: destt str
+ * @srcc: the string
  * Return: the copied string
 */
 
-char *my_strcpy(char *dest, const char *src)
+char *my_strcpy(char *destt, const char *srcc)
 {
-	char *p = dest;
+	char *p = destt;
 
-	while (*src != '\0')
+	while (*srcc != '\0')
 	{
-		*p++ = *src++;
+		*p++ = *srcc++;
 	}
 	*p = '\0';
-	return (dest);
+	return (destt);
 }

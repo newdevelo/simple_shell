@@ -2,16 +2,16 @@
 
 /**
  * my_strcat - Concatenates two strings
- * @dest: The destination string
- * @src: The source string
+ * @destt: The destination string
+ * @srcc: The source string
  * Return: A pointer to the destination string
  */
-char *my_strcat(char *dest, const char *src)
+char *my_strcat(char *destt, const char *srcc)
 {
-	size_t dest_len = get_strlen(dest);
+	size_t dest_len = get_strlen(destt);
 
-	my_strcpy(dest + dest_len, src);
+	my_strcpy(destt + dest_len, srcc);
 
-	return (dest);
+	return (destt);
 }
 

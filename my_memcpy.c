@@ -2,22 +2,22 @@
 
 /**
  * my_memcpy - copies mem like c memcpy
- * @destination: the ...
- * @source: the ...
- * @num_of_bytes: the ...
+ * @destinationn: the ...
+ * @sourcee: the ...
+ * @num_of_bytess: the ...
  * Return: void
 */
-void *my_memcpy(void *destination, const void *source,
-size_t num_of_bytes)
+void *my_memcpy(void *destinationn, const void *sourcee,
+size_t num_of_bytess)
 {
-	unsigned char *dest = destination;
-	const unsigned char *src = source;
+	unsigned char *dest = destinationn;
+	const unsigned char *src = sourcee;
 	size_t idx;
 
-	while (idx < num_of_bytes)
+	while (idx < num_of_bytess)
 	{
 		dest[idx] = src[idx];
 		idx++;
 	}
-	return (destination);
+	return (destinationn);
 }

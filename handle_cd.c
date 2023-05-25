@@ -2,15 +2,15 @@
 
 /**
  * my_cd - handle cd command
- * @arr_of_words: the arr of words
+ * @arr_of_wordss: the arr of words
  * Return: void
 */
 
-void my_cd(char **arr_of_words)
+void my_cd(char **arr_of_wordss)
 {
 	char *initial_directory = NULL, *the_old_pwd, *the_curr_pwd;
 
-	initial_directory = get_dir(arr_of_words[1]);
+	initial_directory = get_dir(arr_of_wordss[1]);
 	if (initial_directory == NULL)
 	{
 		isError("the directory is not found");

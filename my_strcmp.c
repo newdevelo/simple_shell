@@ -2,17 +2,17 @@
 
 /**
  * my_strcmp - Compares two strings.
- * @first: The first string
- * @second: The second string
+ * @firstt: The firstt string
+ * @secondd: The secondd string
  * Return: An integer;
  */
-int my_strcmp(const char *first, const char *second)
+int my_strcmp(const char *firstt, const char *secondd)
 {
-	while (*first == *second && *first != '\0')
+	while (*firstt == *secondd && *firstt != '\0')
 	{
-		first++;
-		second++;
+		firstt++;
+		secondd++;
 	}
 
-	return ((int)(*first) - (int)(*second));
+	return ((int)(*firstt) - (int)(*secondd));
 }
