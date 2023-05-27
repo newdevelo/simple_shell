@@ -2,18 +2,18 @@
 
 /**
  * get_strlen - get string length
- * @strr: the string
+ * @str: the string
  * Return: length
 */
 
-size_t get_strlen(const char *strr)
+size_t get_strlen(const char *str)
 {
 	size_t ans = 0;
 
-	while (*strr != '\0')
+	while (*str != '\0')
 	{
 		ans++;
-		strr++;
+		str++;
 	}
 	return (ans);
 }

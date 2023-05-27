@@ -2,20 +2,20 @@
 
 /**
  * my_getline - a custom getline
- * @the_storage_ptrr: a storage pointer
- * @size_of_storagee: defined as 1024
- * @read_streamm: the file being read
+ * @the_storage_ptr: a storage pointer
+ * @size_of_storage: defined as 1024
+ * @read_stream: the file being read
  * Return: writen line length
 */
 
-ssize_t my_getline(char **the_storage_ptrr, size_t *size_of_storagee,
-FILE *read_streamm)
+ssize_t my_getline(char **the_storage_ptr, size_t *size_of_storage,
+FILE *read_stream)
 {
 	ssize_t line_length = 0, starting_input = 0;
 	char *storage = NULL, curr_char = ' ';
 
 	if (starting_input == 0)
-		fflush(read_streamm);
+		fflush(read_stream);
 	else
 		return (-1);
 
@@ -37,7 +37,7 @@ FILE *read_streamm)
 	}
 
 	storage[starting_input] = '\0';
-	update_buff(the_storage_ptrr, size_of_storagee, storage, starting_input);
+	update_buff(the_storage_ptr, size_of_storage, storage, starting_input);
 	line_length = starting_input;
 
 	if (starting_input != 0)

@@ -2,21 +2,21 @@
 
 /**
  * env_vars - Gets the value of an environment variable.
- * @env_namee: The name of the environment variable.
- * @env_pointerr: Pointer to the environment variables array.
+ * @env_name: The name of the environment variable.
+ * @env_pointer: Pointer to the environment variables array.
  *
  * Return: The value of the environment variable.
  */
-char *env_vars(const char *env_namee, char **env_pointerr)
+char *env_vars(const char *env_name, char **env_pointer)
 {
 	char **the_env;
 
-	for (the_env = env_pointerr; *the_env != NULL; the_env++)
+	for (the_env = env_pointer; *the_env != NULL; the_env++)
 	{
-		if (strncmp(env_namee, *the_env, get_strlen(env_namee)) == 0
-				&& (*the_env)[get_strlen(env_namee)] == '=')
+		if (strncmp(env_name, *the_env, get_strlen(env_name)) == 0
+				&& (*the_env)[get_strlen(env_name)] == '=')
 		{
-			return (*the_env + get_strlen(env_namee) + 1);
+			return (*the_env + get_strlen(env_name) + 1);
 		}
 	}
 	return (NULL);
@@ -32,25 +32,25 @@ void isError(const char *msg)
 }
 
 /**
- * get_dir - Gets the directoryy to change to.
- * @initial_pathh: The initial path passed to cd.
+ * get_dir - Gets the directory to change to.
+ * @initial_path: The initial path passed to cd.
  *
- * Return: The directoryy to change to.
+ * Return: The directory to change to.
  */
-char *get_dir(const char *initial_pathh)
+char *get_dir(const char *initial_path)
 {
-	if (initial_pathh == NULL)
+	if (initial_path == NULL)
 		return (env_vars("HOME", environ));
-	else if (my_strcmp(initial_pathh, "-") == 0)
+	else if (my_strcmp(initial_path, "-") == 0)
 		return (env_vars("the_old_pwd", environ));
 	else
-		return ((char *)initial_pathh);
+		return ((char *)initial_path);
 }
 
 /**
- * handle_cwd - Gets the current working directoryy.
+ * handle_cwd - Gets the current working directory.
  *
- * Return: The current working directoryy.
+ * Return: The current working directory.
  */
 char *handle_cwd()
 {
@@ -63,12 +63,12 @@ char *handle_cwd()
 }
 
 /**
- * switch_current_directory - Changes the current working directoryy.
- * @directoryy: The directoryy to change to.
+ * switch_current_directory - Changes the current working directory.
+ * @directory: The directory to change to.
  */
-void switch_current_directory(const char *directoryy)
+void switch_current_directory(const char *directory)
 {
-	if (chdir(directoryy) < 0)
+	if (chdir(directory) < 0)
 		perror("cd");
 }
 
