@@ -2,12 +2,12 @@
 
 /**
  * handle_sig - handle signal
- * @sig: signal
+ * @sigg: signal
  * Return: void.
  */
-void handle_sig(int sig)
+void handle_sig(int sigg)
 {
-	(void)sig;
+	(void)sigg;
 	write(STDOUT_FILENO, "\n$ ", 4);
 }
 

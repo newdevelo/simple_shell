@@ -2,18 +2,18 @@
 
 /**
  * my_strdup - Duplicates a string
- * @s: The string
+ * @ss: The string
  * Return: new string pointer or NULL
  */
-char *my_strdup(const char *s)
+char *my_strdup(const char *ss)
 {
-	size_t len = get_strlen(s), i;
+	size_t len = get_strlen(ss), i;
 	char *dup = malloc(len + 1);
 
 	if (dup)
 	{
 		for (i = 0; i < len; i++)
-			dup[i] = s[i];
+			dup[i] = ss[i];
 		dup[len] = '\0';
 	}
 

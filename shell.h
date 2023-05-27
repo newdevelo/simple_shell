@@ -18,70 +18,70 @@
 extern char **environ;
 
 
-char *my_strcpy(char *dest, const char *src);
-char **split_string(char *str, const char *str_separator, int *num_of_words);
+char *my_strcpy(char *destt, const char *srcc);
+char **split_string(char *strr, const char *str_separatorr, int *num_of_wordss);
 char *read_input();
-size_t get_strlen(const char *str);
-void free_words(char **words, int num_of_words);
+size_t get_strlen(const char *strr);
+void free_words(char **wordss, int num_of_wordss);
 
 /* File management */
-int file_exists(const char *path);
-char *get_dir_path(const char *path, const char *cmd);
+int file_exists(const char *patht);
+char *get_dir_path(const char *patht, const char *cmdd);
 char *get_path_copy();
 
 /*forking*/
-int execute_by_forking(char **arr_of_words, char *user_prompt,
-char *sh_name, int cnt, int n);
-char *get_full_path(const char *cmd);
-void exec_cmd_with_execve(char *cmd, char **arr_of_words);
-void wait_kid_process(pid_t pid, int *status);
-void execute_bin_ls(char **arr_of_words);
+int execute_by_forking(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntt, int nn);
+char *get_full_path(const char *cmdd);
+void exec_cmd_with_execve(char *cmdd, char **arr_of_wordss);
+void wait_kid_process(pid_t pid, int *statuss);
+void execute_bin_ls(char **arr_of_wordss);
 
 /* String manipulation */
-char *my_strcat(char *dest, const char *src);
+char *my_strcat(char *destt, const char *srcc);
 char *my_strdup(const char *s);
-int my_strcmp(const char *first, const char *second);
-int my_atoi(const char *string);
+int my_strcmp(const char *firstt, const char *secondd);
+int my_atoi(const char *stringg);
 
 /*Get line*/
-ssize_t my_getline(char **the_storage_ptr, size_t *size_of_storage,
+ssize_t my_getline(char **the_storage_ptrr, size_t *size_of_storagee,
 FILE *read_stream);
-int read_from_input(char *char_to_read);
-void *my_realloc(void *old_ptr, size_t size);
-void update_buff(char **buff_ptr, size_t *buff_size, char *buffer, size_t idx);
-void *my_memcpy(void *destination, const void *source, size_t num_of_bytes);
+int read_from_input(char *char_to_readd);
+void *my_realloc(void *old_ptrr, size_t sizee);
+void update_buff(char **buff_ptrr, size_t *buff_sizee, char *bufferr, size_t idx);
+void *my_memcpy(void *destinationn, const void *sourcee, size_t num_of_bytes);
 
 
 /**handle exit , setenv, unsetenv*/
-int handle_various_cmds(char **arr_of_words, char *user_prompt,
-char *sh_name, int cnt, int n);
+int handle_various_cmds(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntt, int nn);
 void handle_the_env(void);
-int my_setenv(const char *env_name, const char *env_value,
+int my_setenv(const char *env_namee, const char *env_valuee,
 		int env_overwrite_val);
-int my_unsetenv(const char *env_name);
+int my_unsetenv(const char *env_namee);
 
 /*handle cd*/
-void my_cd(char **arr_of_words);
+void my_cd(char **arr_of_wordss);
 
 /*cd helper functions*/
-char *env_vars(const char *env_name, char **env_pointer);
-void isError(const char *msg);
-char *get_dir(const char *initial_path);
+char *env_vars(const char *env_namee, char **env_pointerr);
+void isError(const char *msgg);
+char *get_dir(const char *initial_pathh);
 char *handle_cwd();
-void switch_current_directory(const char *directory);
+void switch_current_directory(const char *directoryy);
 
 /*String comparison function*/
 int my_strncmp(const char *st1, const char *st2, size_t number);
 
 /*execute multiple commands*/
-int exec_multi_cmds(char *user_prompt, char *sh_name, int cnt);
+int exec_multi_cmds(char *user_promptt, char *sh_namee, int cntt);
 
-void p_the_err(char *cnt, char *sh_name, char *cmd, char *msg);
-int is_valid_word(char *str);
+void p_the_err(char *cntt, char *sh_namee, char *cmdd, char *msg);
+int is_valid_word(char *strr);
 char *intToString(int num);
 void handle_sig(int sig);
-void handle_exit_with_status(char **arr_of_words, char *user_prompt,
-char *sh_name, int cntr, int n);
-void ex_err(char **arr_of_words, int cntr, char *sh_name);
+void handle_exit_with_status(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntr, int nn);
+void ex_err(char **arr_of_wordss, int cntr, char *sh_namee);
 int my_isdig(int c);
 #endif

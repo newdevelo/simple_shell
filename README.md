@@ -2,4 +2,4 @@
 
 # Authors
 
-Badr hammada
+Badr Hammada
