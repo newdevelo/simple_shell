@@ -2,26 +2,26 @@
 
 /**
  * my_setenv - Set the value of an environment variable.
- * @env_name: name of env var.
- * @env_value: The val to set the env var to.
- * @env_overwrite_val: flag
+ * @env_namee: name of env var.
+ * @env_valuee: The val to set the env var to.
+ * @env_overwrite_vall: flag
  * Return: 0 on success, or -1.
  */
-int my_setenv(const char *env_name, const char *env_value,
-			int env_overwrite_val)
+int my_setenv(const char *env_namee, const char *env_valuee,
+			int env_overwrite_vall)
 {
 	int final_result;
 
-	if (!env_name || env_name[0] == '\0')
+	if (!env_namee || env_namee[0] == '\0')
 	{
 		perror("setenv: invalid variable name\n");
 		return (-1);
 	}
 
-	if (!env_value)
-		env_value = "";
+	if (!env_valuee)
+		env_valuee = "";
 
-	final_result = setenv(env_name, env_value, env_overwrite_val);
+	final_result = setenv(env_namee, env_valuee, env_overwrite_vall);
 
 	if (final_result < 0)
 		perror("setenv: failed to set env\n");

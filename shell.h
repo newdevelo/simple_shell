@@ -2,134 +2,86 @@
 #define _SHELL_H_
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <fcntl.h>
+#include <string.h>
 #include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include <unistd.h>
+#include <fcntl.h>
+#include <dirent.h>
+#include <signal.h>
+#include <ctype.h>
 #include <errno.h>
 
-#define END_OF_FILE -2
-#define EXIT -3
-
-/* Global environemnt */
+#define STORAGE_SIZE 1024
 extern char **environ;
-/* Global program name */
-char *name;
-/* Global history counter */
-int hist;
 
-/**
- * struct list_s - A new struct type defining a linked list.
- * @dir: A directory path.
- * @next: A pointer to another struct list_s.
- */
-typedef struct list_s
-{
-	char *dir;
-	struct list_s *next;
-} list_t;
 
-/**
- * struct builtin_s - A new struct type defining builtin commands.
- * @name: The name of the builtin command.
- * @f: A function pointer to the builtin command's function.
- */
-typedef struct builtin_s
-{
-	char *name;
-	int (*f)(char **argv, char **front);
-} builtin_t;
+char *my_strcpy(char *destt, const char *srcc);
+char **split_string(char *strr, const char *str_separatorr, int *num_of_wordss);
+char *read_input();
+size_t get_strlen(const char *strr);
+void free_words(char **wordss, int num_of_wordss);
 
-/**
- * struct alias_s - A new struct defining aliases.
- * @name: The name of the alias.
- * @value: The value of the alias.
- * @next: A pointer to another struct alias_s.
- */
-typedef struct alias_s
-{
-	char *name;
-	char *value;
-	struct alias_s *next;
-} alias_t;
+/* File management */
+int file_exists(const char *patht);
+char *get_dir_path(const char *patht, const char *cmdd);
+char *get_path_copy();
 
-/* Global aliases linked list */
-alias_t *aliases;
+/*forking*/
+int execute_by_forking(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntt, int nn);
+char *get_full_path(const char *cmdd);
+void exec_cmd_with_execve(char *cmdd, char **arr_of_wordss);
+void wait_kid_process(pid_t pid, int *statuss);
+void execute_bin_ls(char **arr_of_wordss);
 
-/* Main Helpers */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_strtok(char *line, char *delim);
-char *get_location(char *command);
-list_t *get_path_dir(char *path);
-int execute(char **args, char **front);
-void free_list(list_t *head);
-char *_itoa(int num);
+/* String manipulation */
+char *my_strcat(char *destt, const char *srcc);
+char *my_strdup(const char *s);
+int my_strcmp(const char *firstt, const char *secondd);
+int my_atoi(const char *stringg);
 
-/* Input Helpers */
-void handle_line(char **line, ssize_t read);
-void variable_replacement(char **args, int *exe_ret);
-char *get_args(char *line, int *exe_ret);
-int call_args(char **args, char **front, int *exe_ret);
-int run_args(char **args, char **front, int *exe_ret);
-int handle_args(int *exe_ret);
-int check_args(char **args);
-void free_args(char **args, char **front);
-char **replace_aliases(char **args);
+/*Get line*/
+ssize_t my_getline(char **the_storage_ptrr, size_t *size_of_storagee,
+FILE *read_stream);
+int read_from_input(char *char_to_readd);
+void *my_realloc(void *old_ptrr, size_t sizee);
+void update_buff(char **buff_ptrr, size_t *buff_sizee, char *bufferr, size_t idx);
+void *my_memcpy(void *destinationn, const void *sourcee, size_t num_of_bytes);
 
-/* String functions */
-int _strlen(const char *s);
-char *_strcat(char *dest, const char *src);
-char *_strncat(char *dest, const char *src, size_t n);
-char *_strcpy(char *dest, const char *src);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
 
-/* Builtins */
-int (*get_builtin(char *command))(char **args, char **front);
-int shellby_exit(char **args, char **front);
-int shellby_env(char **args, char __attribute__((__unused__)) **front);
-int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_alias(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
+/**handle exit , setenv, unsetenv*/
+int handle_various_cmds(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntt, int nn);
+void handle_the_env(void);
+int my_setenv(const char *env_namee, const char *env_valuee,
+		int env_overwrite_val);
+int my_unsetenv(const char *env_namee);
 
-/* Builtin Helpers */
-char **_copyenv(void);
-void free_env(void);
-char **_getenv(const char *var);
+/*handle cd*/
+void my_cd(char **arr_of_wordss);
 
-/* Error Handling */
-int create_error(char **args, int err);
-char *error_env(char **args);
-char *error_1(char **args);
-char *error_2_exit(char **args);
-char *error_2_cd(char **args);
-char *error_2_syntax(char **args);
-char *error_126(char **args);
-char *error_127(char **args);
+/*cd helper functions*/
+char *env_vars(const char *env_namee, char **env_pointerr);
+void isError(const char *msgg);
+char *get_dir(const char *initial_pathh);
+char *handle_cwd();
+void switch_current_directory(const char *directoryy);
 
-/* Linkedlist Helpers */
-alias_t *add_alias_end(alias_t **head, char *name, char *value);
-void free_alias_list(alias_t *head);
-list_t *add_node_end(list_t **head, char *dir);
-void free_list(list_t *head);
+/*String comparison function*/
+int my_strncmp(const char *st1, const char *st2, size_t number);
 
-void help_all(void);
-void help_alias(void);
-void help_cd(void);
-void help_exit(void);
-void help_help(void);
-void help_env(void);
-void help_setenv(void);
-void help_unsetenv(void);
-void help_history(void);
+/*execute multiple commands*/
+int exec_multi_cmds(char *user_promptt, char *sh_namee, int cntt);
 
-int proc_file_commands(char *file_path, int *exe_ret);
-#endif /* _SHELL_H_ */
+void p_the_err(char *cntt, char *sh_namee, char *cmdd, char *msg);
+int is_valid_word(char *strr);
+char *intToString(int num);
+void handle_sig(int sig);
+void handle_exit_with_status(char **arr_of_wordss, char *user_promptt,
+char *sh_namee, int cntr, int nn);
+void ex_err(char **arr_of_wordss, int cntr, char *sh_namee);
+int my_isdig(int c);
+#endif

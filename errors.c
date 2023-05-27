@@ -1,115 +1,46 @@
 #include "shell.h"
 
-int num_len(int num);
-char *_itoa(int num);
-int create_error(char **args, int err);
 
 /**
- * num_len - Counts the digit length of a number.
- * @num: The number to measure.
- *
- * Return: The digit length.
- */
-int num_len(int num)
+ * p_the_err - errrorrorrooror
+ * @sh_namee: naaaaaaame
+ * @cmd: cmmmmmmd
+ * @msgg: mssssg
+ * @cntt: cmonad count
+ * Return: void
+*/
+void p_the_err(char *cntt, char *sh_namee, char *cmd, char *msgg)
 {
-	unsigned int num1;
-	int len = 1;
-
-	if (num < 0)
+	write(STDERR_FILENO, sh_namee, get_strlen(sh_namee));
+	if (cmd != NULL)
 	{
-		len++;
-		num1 = num * -1;
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, cntt, get_strlen(cntt));
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, cmd, get_strlen(cmd));
 	}
-	else
-	{
-		num1 = num;
-	}
-	while (num1 > 9)
-	{
-		len++;
-		num1 /= 10;
-	}
-
-	return (len);
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, msgg, get_strlen(msgg));
 }
 
 /**
- * _itoa - Converts an integer to a string.
- * @num: The integer.
- *
- * Return: The converted string.
- */
-char *_itoa(int num)
+ * ex_err- errrorrorrooror
+ * @sh_namee: naaaaaame
+ * @arr_of_wordss: akfjalal
+ * @cntrr: cmonad count
+ * Return: void
+*/
+void ex_err(char **arr_of_wordss, int cntrr, char *sh_namee)
 {
-	char *buffer;
-	int len = num_len(num);
-	unsigned int num1;
+	char *err_code = intToString(cntrr);
 
-	buffer = malloc(sizeof(char) * (len + 1));
-	if (!buffer)
-		return (NULL);
-
-	buffer[len] = '\0';
-
-	if (num < 0)
-	{
-		num1 = num * -1;
-		buffer[0] = '-';
-	}
-	else
-	{
-		num1 = num;
-	}
-
-	len--;
-	do {
-		buffer[len] = (num1 % 10) + '0';
-		num1 /= 10;
-		len--;
-	} while (num1 > 0);
-
-	return (buffer);
-}
-
-
-/**
- * create_error - Writes a custom error message to stderr.
- * @args: An array of arguments.
- * @err: The error value.
- *
- * Return: The error value.
- */
-int create_error(char **args, int err)
-{
-	char *error;
-
-	switch (err)
-	{
-	case -1:
-		error = error_env(args);
-		break;
-	case 1:
-		error = error_1(args);
-		break;
-	case 2:
-		if (*(args[0]) == 'e')
-			error = error_2_exit(++args);
-		else if (args[0][0] == ';' || args[0][0] == '&' || args[0][0] == '|')
-			error = error_2_syntax(args);
-		else
-			error = error_2_cd(args);
-		break;
-	case 126:
-		error = error_126(args);
-		break;
-	case 127:
-		error = error_127(args);
-		break;
-	}
-	write(STDERR_FILENO, error, _strlen(error));
-
-	if (error)
-		free(error);
-	return (err);
-
+	write(STDOUT_FILENO, sh_namee, get_strlen(sh_namee));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, err_code, get_strlen(err_code));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, arr_of_wordss[0], get_strlen(arr_of_wordss[0]));
+	write(STDOUT_FILENO, ": Illegal number: ", 19);
+	write(STDOUT_FILENO, arr_of_wordss[1], get_strlen(arr_of_wordss[1]));
+	write(STDOUT_FILENO, "\n", 2);
+	free(err_code);
 }
