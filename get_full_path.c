@@ -2,11 +2,11 @@
 
 /**
  * get_full_path - search for the full path of a command
- * @cmdd: the command
+ * @cmd: the command
  * Return: full directory path or NULL
 */
 
-char *get_full_path(const char *cmdd)
+char *get_full_path(const char *cmd)
 {
 	char *copy_of_path, *dir_path, *token_of_path;
 
@@ -19,7 +19,7 @@ char *get_full_path(const char *cmdd)
 
 	while (token_of_path != NULL)
 	{
-		dir_path = get_dir_path(token_of_path, cmdd);
+		dir_path = get_dir_path(token_of_path, cmd);
 		if (!dir_path)
 			break;
 
@@ -38,8 +38,8 @@ char *get_full_path(const char *cmdd)
 
 	free(copy_of_path);
 
-	if (file_exists(cmdd) == 1)
-		return ((char *) cmdd);
+	if (file_exists(cmd) == 1)
+		return ((char *) cmd);
 
 	return (dir_path);
 }

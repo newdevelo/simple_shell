@@ -2,14 +2,14 @@
 
 /**
  * exec_cmd_with_execve - the name explains it
- * @cmdd: the command to execute
- * @arr_of_wordss: arr of commands
+ * @cmd: the command to execute
+ * @arr_of_words: arr of commands
  * Return: void
 */
 
-void exec_cmd_with_execve(char *cmdd, char **arr_of_wordss)
+void exec_cmd_with_execve(char *cmd, char **arr_of_words)
 {
-	if (execve(cmdd, arr_of_wordss, NULL) == -1)
+	if (execve(cmd, arr_of_words, NULL) == -1)
 	{
 		perror("Error executing command");
 		return;

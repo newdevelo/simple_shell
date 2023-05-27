@@ -1,15 +1,15 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <signal.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-#include <stdio.h>
 
 #define END_OF_FILE -2
 #define EXIT -3
@@ -28,8 +28,8 @@ int hist;
  */
 typedef struct list_s
 {
-  char *dir;
-  struct list_s *next;
+	char *dir;
+	struct list_s *next;
 } list_t;
 
 /**
@@ -39,8 +39,8 @@ typedef struct list_s
  */
 typedef struct builtin_s
 {
-  char *name;
-  int (*f)(char **argv, char **front);
+	char *name;
+	int (*f)(char **argv, char **front);
 } builtin_t;
 
 /**
@@ -51,9 +51,9 @@ typedef struct builtin_s
  */
 typedef struct alias_s
 {
-  char *name;
-  char *value;
-  struct alias_s *next;
+	char *name;
+	char *value;
+	struct alias_s *next;
 } alias_t;
 
 /* Global aliases linked list */

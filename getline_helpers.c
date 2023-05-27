@@ -2,20 +2,20 @@
 
 /**
  * read_from_input  - reads input
- * @char_to_readd: the chars
+ * @char_to_read: the chars
  * Return: 1 if read else 0
 */
 
-int read_from_input(char *char_to_readd)
+int read_from_input(char *char_to_read)
 {
-	ssize_t start = read(STDIN_FILENO, char_to_readd, 1);
+	ssize_t start = read(STDIN_FILENO, char_to_read, 1);
 
 	if (start == -1)
 		return (0);
 	if (start == 0)
 	{
-		if (char_to_readd != NULL)
-			char_to_readd[0] = '\0';
+		if (char_to_read != NULL)
+			char_to_read[0] = '\0';
 		return (0);
 	}
 	return (1);
@@ -23,29 +23,29 @@ int read_from_input(char *char_to_readd)
 
 /**
  * my_realloc  - same as C realloc
- * @old_ptrr: the old one
- * @sizee: curr sizee
+ * @old_ptr: the old one
+ * @size: curr size
  * Return: void
 */
 
-void *my_realloc(void *old_ptrr, size_t sizee)
+void *my_realloc(void *old_ptr, size_t size)
 {
 	void *new_ptr;
 
-	if (sizee == 0)
+	if (size == 0)
 	{
-		free(old_ptrr);
+		free(old_ptr);
 		return (NULL);
 	}
 
-	new_ptr = malloc(sizee);
+	new_ptr = malloc(size);
 	if (new_ptr == NULL)
 	return (NULL);
 
-	if (old_ptrr != NULL)
+	if (old_ptr != NULL)
 	{
-		my_memcpy(new_ptr, old_ptrr, sizee);
-		free(old_ptrr);
+		my_memcpy(new_ptr, old_ptr, size);
+		free(old_ptr);
 	}
 
 	return (new_ptr);
@@ -54,7 +54,7 @@ void *my_realloc(void *old_ptrr, size_t sizee)
 /**
  * update_buff  - updates the storage buffer
  * @buff_ptr: pointer
- * @buff_size: the sizee of buff
+ * @buff_size: the size of buff
  * @buffer: storage
  * @idx: current position of buffer
  * Return: void

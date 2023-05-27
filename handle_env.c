@@ -7,11 +7,11 @@
 
 void handle_the_env(void)
 {
-	char **env_pointerr = environ;
+	char **env_pointer = environ;
 
-	while (*env_pointerr)
+	while (*env_pointer)
 	{
-		printf("%s\n", *env_pointerr);
-		env_pointerr++;
+		printf("%s\n", *env_pointer);
+		env_pointer++;
 	}
 }
